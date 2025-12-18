@@ -11,7 +11,7 @@ const pageTitle = "今日礼物";
 const prod = import.meta.env.PROD;
 let rootPage;
 if (prod) {
-  rootPage = import.meta.env.SITE;
+  rootPage = '/miniprogram';
 }else rootPage = '/';
 
 const giftPage = joinUrl(rootPage, '/gift/');
