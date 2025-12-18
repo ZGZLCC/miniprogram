@@ -9,10 +9,10 @@ import { joinUrl } from '../scripts/url-utils';
 
 
 const pageTitle = "Chan&Chen";
-const dev = import.meta.env.DEV;
+const prod = import.meta.env.PROD;
 let rootPage;
-if (dev) {
-  rootPage = import.meta.env.BASE_URL;
+if (prod) {
+  rootPage = import.meta.env.SITE;
 }else rootPage = '/';
 
 const giftPage = joinUrl(rootPage, '/gift/');

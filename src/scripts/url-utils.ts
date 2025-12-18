@@ -9,5 +9,5 @@ export function joinUrl(...parts: string[]): string {
  * @returns 返回拼接后的完整URL路径
  */
 export function baseUrl(path: string) {
-	return joinUrl("", import.meta.env.BASE_URL, path);
+	return joinUrl("", import.meta.env.SITE, path);
 }
