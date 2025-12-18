@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
+import Countdown from '../components/countdown.astro';
+
+const pageTitle = "相爱天数";
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    <Countdown />
+    <div class="buttons-container">
+        <button class="button" id="backBtn">返回首页</button>
+    </div>
+    <Footer />
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const backBtn = document.getElementById('backBtn');
+        if (backBtn) {
+          backBtn.addEventListener('click', function() {
+            window.location.href = '/';
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

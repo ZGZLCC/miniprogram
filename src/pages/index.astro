@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+
+import Footer from '../components/footer.astro';
+import Header from '../components/header.astro';
+import Slideshow from '../components/slideshow.astro';
+import Welcome from '../components/welcome.astro';
+
+const pageTitle = "Chan&Chen";
+---
+
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    <Slideshow />
+    <Welcome />
+    <div class="buttons-container">
+      <button class="button" id="daysBtn">相爱天数</button>
+      <button class="button" id="giftBtn">拆开礼物</button>
+    </div>
+    <Footer />
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const giftBtn = document.getElementById('giftBtn');
+        if (giftBtn) {
+          giftBtn.addEventListener('click', function() {
+            window.location.href = '/gift/';
+          });
+        }
+        const daysBtn = document.getElementById('daysBtn');
+        if (daysBtn) {
+          daysBtn.addEventListener('click', function() {
+            window.location.href = '/days/';
+            });
+        }
+        
+        // 初始化照片轮播
+        initSlideshow();
+      });
+      // 照片轮播功能
+      function initSlideshow() {
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName('slideshow-slide');
+        
+        // 隐藏所有幻灯片
+        for (let i = 0; i < slides.length; i++) {
+          (slides[i] as HTMLElement).style.display = "none";
+        }
+        
+        // 显示下一张图片
+        function showSlides() {
+          // 隐藏所有幻灯片
+          for (let i = 0; i < slides.length; i++) {
+            (slides[i] as HTMLElement).style.display = "none";
+          }
+          
+          // 循环到下一张图片
+          slideIndex++;
+          if (slideIndex > slides.length) {
+            slideIndex = 1;
+          }
+          
+          // 显示当前图片
+          (slides[slideIndex - 1] as HTMLElement).style.display = "block";
+          
+          // 3秒后切换到下一张图片
+          setTimeout(showSlides, 3000);
+        }
+        
+        // 开始轮播
+        showSlides();
+      }
+    </script>
+  </body>
+</html>
