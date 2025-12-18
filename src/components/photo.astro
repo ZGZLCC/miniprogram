@@ -1,7 +1,15 @@
 ---
+import { joinPaths } from 'node_modules/astro/dist/core/path';
+import { joinUrl } from '../scripts/url-utils';
 const { classes, location, number, type } = Astro.props;
+
+const prod = import.meta.env.PROD;
+let rootPage;
+if (prod) {
+  rootPage = '/miniprogram';
+}else rootPage = '/';
 ---
 
 <div class={`${classes}`}>
-    <img src={`/images/${location}${number}.${type}`} alt={`照片${number}`}>
+    <img src={joinUrl(rootPage, `/images/${location}${number}.${type}`)} alt={`照片${number}`}>
 </div>
