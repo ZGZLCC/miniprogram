@@ -18,8 +18,12 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
+    text-align: center;
+    font-family: 'Noto Serif SC', 'Segoe UI', Roboto, serif;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .button:hover {
-    background-color: #ff8aa2;
+    background-color: rgba(255, 158, 181, 0.8);
 }

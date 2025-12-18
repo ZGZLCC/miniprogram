@@ -4,8 +4,18 @@ import '../styles/global.css';
 import Header from '../components/header.astro';
 import Footer from '../components/footer.astro';
 import Giftshow from '../components/giftshow.astro';
+import { joinUrl } from '../scripts/url-utils';
 
 const pageTitle = "今日礼物";
+
+const dev = import.meta.env.DEV;
+let rootPage;
+if (dev) {
+  rootPage = import.meta.env.BASE_URL;
+}else rootPage = '/';
+
+const giftPage = joinUrl(rootPage, '/gift/');
+const daysPage = joinUrl(rootPage, '/miniprogram/days/');
 ---
 
 <html lang="zh-CN">
@@ -18,19 +28,9 @@ const pageTitle = "今日礼物";
     <Header />
     <Giftshow />
     <div class="buttons-container">
-      <button class="button" id="backBtn">返回首页</button>
+      <!-- <button class="button" id="backBtn">返回首页</button> -->
+       <a class="button" href={rootPage}>返回首页</a>
     </div>
     <Footer />
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const backBtn = document.getElementById('backBtn');
-        if (backBtn) {
-          backBtn.addEventListener('click', function(){
-            window.location.href = '/';
-          });
-        }
-      });
-    </script>
   </body>
 </html>

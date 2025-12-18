@@ -1,9 +1,19 @@
 ---
 import '../styles/navigation.css';
+import { joinUrl } from '../scripts/url-utils';
+
+const dev = import.meta.env.DEV;
+let rootPage;
+if (dev) {
+  rootPage = import.meta.env.BASE_URL;
+}else rootPage = '/';
+
+const giftPage = joinUrl(rootPage, '/gift/');
+const daysPage = joinUrl(rootPage, '/days/');
 ---
 
 <div class="nav-links">
-<a href="/">首页</a>
-<a href="/gift/">今日礼物</a>
-<a href="/days/">相爱天数</a>
+<a href={rootPage}>首页</a>
+<a href={giftPage}>今日礼物</a>
+<a href={daysPage}>相爱天数</a>
 </div>

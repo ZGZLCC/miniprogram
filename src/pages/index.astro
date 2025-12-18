@@ -5,8 +5,18 @@ import Footer from '../components/footer.astro';
 import Header from '../components/header.astro';
 import Slideshow from '../components/slideshow.astro';
 import Welcome from '../components/welcome.astro';
+import { joinUrl } from '../scripts/url-utils';
+
 
 const pageTitle = "Chan&Chen";
+const dev = import.meta.env.DEV;
+let rootPage;
+if (dev) {
+  rootPage = import.meta.env.BASE_URL;
+}else rootPage = '/';
+
+const giftPage = joinUrl(rootPage, '/gift/');
+const daysPage = joinUrl(rootPage, '/days/');
 ---
 
 <html lang="zh-CN">
@@ -20,25 +30,16 @@ const pageTitle = "Chan&Chen";
     <Slideshow />
     <Welcome />
     <div class="buttons-container">
-      <button class="button" id="daysBtn">相爱天数</button>
-      <button class="button" id="giftBtn">拆开礼物</button>
+      <!-- <button class="button" id="daysBtn">相爱天数</button>
+      <button class="button" id="giftBtn">拆开礼物</button> -->
+      <a class="button" href={daysPage}>相爱天数</a>
+      <a class="button" href={giftPage}>拆开礼物</a>
     </div>
     <Footer />
 
     <script>
+
       document.addEventListener('DOMContentLoaded', function() {
-        const giftBtn = document.getElementById('giftBtn');
-        if (giftBtn) {
-          giftBtn.addEventListener('click', function() {
-            window.location.href = '/gift/';
-          });
-        }
-        const daysBtn = document.getElementById('daysBtn');
-        if (daysBtn) {
-          daysBtn.addEventListener('click', function() {
-            window.location.href = '/days/';
-            });
-        }
         
         // 初始化照片轮播
         initSlideshow();
