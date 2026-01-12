@@ -3,10 +3,7 @@ import { joinUrl } from '../scripts/url-utils';
 const { classes, location, number, type } = Astro.props;
 
 const prod = import.meta.env.PROD;
-let rootPage;
-if (prod) {
-  rootPage = '/miniprogram';
-}else rootPage = '/';
+let rootPage = '/';
 ---
 
 <div class={`${classes}`}>

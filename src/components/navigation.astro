@@ -2,11 +2,7 @@
 import '../styles/navigation.css';
 import { joinUrl } from '../scripts/url-utils';
 
-const prod = import.meta.env.PROD;
-let rootPage;
-if (prod) {
-  rootPage = '/miniprogram';
-}else rootPage = '/';
+const rootPage = '/';
 
 const giftPage = joinUrl(rootPage, '/gift/');
 const daysPage = joinUrl(rootPage, '/days/');

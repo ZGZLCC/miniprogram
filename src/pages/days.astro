@@ -7,11 +7,7 @@ import Countdown from '../components/countdown.astro';
 import { joinUrl } from '../scripts/url-utils';
 
 const pageTitle = "相爱天数";
-const prod = import.meta.env.PROD;
-let rootPage;
-if (prod) {
-  rootPage = '/miniprogram';
-}else rootPage = '/';
+const rootPage = '/';
 
 const giftPage = joinUrl(rootPage, '/gift/');
 const daysPage = joinUrl(rootPage, '/miniprogram/days/');
