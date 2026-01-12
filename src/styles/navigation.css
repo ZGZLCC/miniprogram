@@ -14,11 +14,12 @@
   font-size: 1.2rem;
   font-weight: bold;
   padding: 10px 15px;
+  color: black;
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
-  background-color: #ff9776;
+  color: #646464;
 }
 
 .expanded {
